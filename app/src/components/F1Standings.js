@@ -1,34 +1,36 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchDrivers } from '../redux/drivers/DriverActions';
+import { fetchStandings } from '../redux/standings/standingsActions';
 import F1Car from '../F1-Car-Racing.png'
 
-function F1Drivers({driverData, fetchDrivers}) {
+import './F1Standings.css';
+
+function F1Drivers({standingsData, fetchStandings}) {
     useEffect(()=> {
-        fetchDrivers();
+        fetchStandings();
     },[]);
    
-    return driverData.loading ? (
+    return standingsData.loading ? (
         <h2>Loading</h2>
-      ) : driverData.error ? (
-        <h2>{driverData.error}</h2>
+      ) : standingsData.error ? (
+        <h2>{standingsData.error}</h2>
       ) : (
-        <div>
+        <div className='standings-page'>
           <h1>Formula 1 - 2020 Racing</h1>
           <img src={F1Car} width='500px'/>
-          <h2>Drivers Standings</h2>
-          <div>
-            {driverData &&
-              driverData &&
-              driverData.map(driver => 
-                <div>
-                  <p>{driver.position}</p>
-                  <p>{driver.Driver.givenName} {driver.Driver.familyName}</p>
+          <h2>Drivers Current Standings</h2>
+          <div className='standings-wrapper'>
+            {standingsData &&
+              standingsData &&
+              standingsData.map(driver => 
+                <div className='driver-wrapper' key={driver.Driver.permanentNumber}>
+                  <p>{driver.position}. {driver.Driver.givenName} {driver.Driver.familyName}</p>
                   <p>Nationality: {driver.Driver.nationality}</p>
                   <p>Date of Birth: {driver.Driver.dateOfBirth}</p>
                   <p>Team: {driver.Constructors[0].name}</p>
                   <p>Wins: {driver.wins}</p>
                   <p>Total Points: {driver.points}</p>
+                  <a href={driver.Driver.url} target='_blank'>Biography</a>
                 </div>
             )}
           </div>
@@ -38,12 +40,12 @@ function F1Drivers({driverData, fetchDrivers}) {
 
 const mapStateToProps = (state) => {
     return {
-        driverData: state.drivers
+        standingsData: state.standings
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-      fetchDrivers: () => dispatch(fetchDrivers())
+      fetchStandings: () => dispatch(fetchStandings())
     }
   }
   

@@ -1,34 +1,34 @@
-import {FETCH_DRIVERS_REQUEST, FETCH_DRIVERS_SUCCESS, FETCH_DRIVERS_FAILURE} from './DriverTypes';
+import {FETCH_STANDINGS_REQUEST, FETCH_STANDINGS_SUCCESS, FETCH_STANDINGS_FAILURE} from './standingsTypes';
 
 const initialData = {
     loading: false,
-    drivers: [],
+    standings: [],
     error: ''
 }
 
-const driverReducer = (state=initialData, action) => {
+const standingsReducer = (state=initialData, action) => {
     switch(action.type){
-        case FETCH_DRIVERS_REQUEST:
+        case FETCH_STANDINGS_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case FETCH_DRIVERS_SUCCESS:
+        case FETCH_STANDINGS_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                drivers: [...action.payload],
+                standings: [...action.payload],
                 error: ''
             }
-        case FETCH_DRIVERS_FAILURE:
+        case FETCH_STANDINGS_FAILURE:
             return {
                 ...state,
                 loading: false,
-                drivers: [],
+                standings: [],
                 error: action.payload
             } 
         default: return state       
     }
 }
 
-export default driverReducer;
+export default standingsReducer;

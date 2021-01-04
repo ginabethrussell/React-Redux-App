@@ -1,0 +1,35 @@
+.standings-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
+    color: white;
+}
+.standings-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 960px;
+    margin-bottom: 25px;
+}
+.driver-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    border-bottom: 2px solid black;
+    padding: 5px 8px;
+}
+
+.driver-wrapper p, .driver-wrapper a {
+    font-size: 1.4rem;
+    margin: 8px;
+    color: black;   
+}
+
+.driver-wrapper a {
+    text-decoration: none;
+    color: crimson;
+}
