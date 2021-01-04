@@ -24,9 +24,9 @@ export const fetchDriversFailure = (error) => {
 export const fetchDrivers = (dispatch) => {
     return (dispatch) => {
         dispatch(fetchDriversRequest);
-        axios.get('http://ergast.com/api/f1/drivers.json?')
+        axios.get('http://ergast.com/api/f1/current/driverStandings.json')
         .then(response => {
-            const drivers = response.data.MRData.DriverTable.Drivers;
+            const drivers = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
             dispatch(fetchDriversSuccess(drivers));
         })
         .catch(err => {
@@ -38,3 +38,4 @@ export const fetchDrivers = (dispatch) => {
     }
        
 }
+// http://ergast.com/api/f1/drivers.json?
