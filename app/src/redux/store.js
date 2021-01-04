@@ -1,5 +1,12 @@
 import {createStore, applyMiddleware} from 'redux';
+import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './standings/standingsReducer';
+import standingsReducer from './standings/standingsReducer';
+import racesReducer from './races/racesReducer';
 
-export const store = createStore(reducer, applyMiddleware(thunk));
+const rootReducer = combineReducers({
+    standings: standingsReducer,
+    races: racesReducer
+})
+
+export const store = createStore(rootReducer, applyMiddleware(thunk));

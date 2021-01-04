@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchStandings } from '../redux/standings/standingsActions';
-import F1Car from '../F1-Car-Racing.png'
 
 import './F1Standings.css';
 
@@ -16,9 +15,7 @@ function F1Drivers({standingsData, fetchStandings}) {
         <h2>{standingsData.error}</h2>
       ) : (
         <div className='standings-page'>
-          <h1>Formula 1 - 2020 Racing</h1>
-          <img src={F1Car} width='500px'/>
-          <h2>Drivers Current Standings</h2>
+          <h2>2020 Season Standings</h2>
           <div className='standings-wrapper'>
             {standingsData &&
               standingsData &&
@@ -40,7 +37,7 @@ function F1Drivers({standingsData, fetchStandings}) {
 
 const mapStateToProps = (state) => {
     return {
-        standingsData: state.standings
+        standingsData: state.standings.standings
     }
 }
 const mapDispatchToProps = dispatch => {

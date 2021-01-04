@@ -1,4 +1,4 @@
-.standings-page {
+.races-page {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -8,13 +8,13 @@
     background-color: black;
     color: white;
 }
-.standings-wrapper {
+.races-wrapper {
     width: 90%;
     margin: 0 auto;
     max-width: 960px;
     margin-bottom: 25px;
 }
-.driver-wrapper {
+.race-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -24,13 +24,13 @@
     padding: 5px 8px;
 }
 
-.driver-wrapper p, .driver-wrapper a {
+.race-wrapper p, .race-wrapper a {
     font-size: 1.4rem;
     margin: 8px;
     color: black;   
 }
 
-.driver-wrapper a {
+.race-wrapper a {
     text-decoration: none;
     color: crimson;
 }
