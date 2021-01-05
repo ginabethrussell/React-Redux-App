@@ -25,8 +25,8 @@ export const fetchStandings = (year='current') => {
     return (dispatch) => {
         dispatch(fetchStandingsRequest);
         console.log("passed in year", year);
-        console.log(`http://ergast.com/api/f1/${year}/driverStandings.json`)
-        axios.get(`http://ergast.com/api/f1/${year}/driverStandings.json`)
+        console.log(`https://ergast.com/api/f1/${year}/driverStandings.json`)
+        axios.get(`https://ergast.com/api/f1/${year}/driverStandings.json`)
         .then(response => {
             const standings = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
             console.log(year, standings)

@@ -23,7 +23,7 @@ export const fetchRacesFailure = (err) => {
 
 export const fetchRaces = (year='current') => (dispatch) => {
     dispatch(fetchRacesRequest);
-    axios.get(`http://ergast.com/api/f1/${year}.json`)
+    axios.get(`https://ergast.com/api/f1/${year}.json`)
     .then(response => {
         console.log(response.data.MRData.RaceTable.Races);
         const races = response.data.MRData.RaceTable.Races;
