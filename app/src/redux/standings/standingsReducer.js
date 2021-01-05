@@ -17,7 +17,7 @@ const standingsReducer = (state=initialData, action) => {
             return {
                 ...state,
                 loading: false,
-                standings: [...action.payload],
+                standings: action.payload,
                 error: ''
             }
         case FETCH_STANDINGS_FAILURE:

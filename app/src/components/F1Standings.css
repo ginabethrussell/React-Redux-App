@@ -8,6 +8,36 @@
     background-color: black;
     color: white;
 }
+
+.standings-page h2 {
+    text-transform: capitalize;
+}
+
+.season-selector {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.season-selector label {
+    font-size: 1.8rem;
+    margin-right: 20px;
+}
+
+.season-selector select {
+    padding: 5px 20px;
+    margin-right: 20px;
+}
+
+.season-selector button {
+    padding: 5px 10px;
+    background-color: crimson;
+    color: white;
+    border: 1px solid crimson;
+}
 .standings-wrapper {
     width: 90%;
     margin: 0 auto;

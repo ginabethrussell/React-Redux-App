@@ -1,13 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchStandings } from '../redux/standings/standingsActions';
 
 import './F1Standings.css';
 
 function F1Drivers({standingsData, fetchStandings}) {
+  const [year, setYear] = useState('current');
+
     useEffect(()=> {
-        fetchStandings();
+      fetchStandings(year);
     },[]);
+
+    const years = [];
+      for(let i = 1950; i < 2020; i++){
+        years.push(i)
+    }
+    // console.log(years)
+    const handleChange = (e) => {
+      setYear(e.target.value);
+      console.log(e.target.value)
+    }
    
     return standingsData.loading ? (
         <h2>Loading</h2>
@@ -15,7 +27,17 @@ function F1Drivers({standingsData, fetchStandings}) {
         <h2>{standingsData.error}</h2>
       ) : (
         <div className='standings-page'>
-          <h2>2020 Season Standings</h2>
+          <h2>{ year } Season Standings</h2>
+          <div className='season-selector'>
+            <label htmlFor='year'>Select Season</label>
+            <select name='year'  id='year' value={year} onChange={handleChange}>
+              {years.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+              <option value='current'>Current</option>
+            </select>
+            <button className='select-season-btn' onClick={() => fetchStandings(year)}>View Standings</button>
+          </div>
           <div className='standings-wrapper'>
             {standingsData &&
               standingsData &&
@@ -42,7 +64,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-      fetchStandings: () => dispatch(fetchStandings())
+      fetchStandings: (year) => dispatch(fetchStandings(year))
     }
   }
   

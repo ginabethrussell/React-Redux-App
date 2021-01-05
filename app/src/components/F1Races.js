@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchRaces } from '../redux/races/racesActions';
 
 import './F1Races.css';
 
 function F1Races({fetchRaces, raceData}) {
+  const [year, setYear ] = useState('current');
+
     useEffect(()=> {
         fetchRaces();
     }, [])
-    console.log(raceData);
+    // console.log(raceData);
+    const years = [];
+      for(let i = 1950; i < 2020; i++){
+        years.push(i)
+    }
+    // console.log(years)
+    const handleChange = (e) => {
+      setYear(e.target.value);
+      console.log(e.target.value)
+    }
 
     return raceData.loading ? (
         <h2>Loading</h2>
@@ -17,7 +28,17 @@ function F1Races({fetchRaces, raceData}) {
       ) : (
         <div className='races-page'>
           
-          <h2>2020 Season Races</h2>
+          <h2>{year} Season Races</h2>
+          <div className='season-selector'>
+            <label htmlFor='year'>Select Season</label>
+            <select name='year'  id='year' value={year} onChange={handleChange}>
+              {years.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+              <option value='current'>Current</option>
+            </select>
+            <button className='select-season-btn' onClick={() => fetchRaces(year)}>View Races</button>
+          </div>
           <div className='races-wrapper'>
             {raceData && raceData.map(race => (
                 <div className='race-wrapper' key={race.url}>
@@ -40,7 +61,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-      fetchRaces: () => dispatch(fetchRaces())
+      fetchRaces: (year) => dispatch(fetchRaces(year))
     }
   }
   

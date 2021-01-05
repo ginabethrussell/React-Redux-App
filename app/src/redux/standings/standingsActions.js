@@ -21,12 +21,15 @@ export const fetchStandingsFailure = (error) => {
     }
 }
 
-export const fetchStandings = (dispatch) => {
+export const fetchStandings = (year='current') => {
     return (dispatch) => {
         dispatch(fetchStandingsRequest);
-        axios.get('http://ergast.com/api/f1/current/driverStandings.json')
+        console.log("passed in year", year);
+        console.log(`http://ergast.com/api/f1/${year}/driverStandings.json`)
+        axios.get(`http://ergast.com/api/f1/${year}/driverStandings.json`)
         .then(response => {
             const standings = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+            console.log(year, standings)
             dispatch(fetchStandingsSuccess(standings));
         })
         .catch(err => {

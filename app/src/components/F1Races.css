@@ -8,6 +8,11 @@
     background-color: black;
     color: white;
 }
+
+.races-page h2 {
+    text-transform: capitalize;
+}
+
 .races-wrapper {
     width: 90%;
     margin: 0 auto;
