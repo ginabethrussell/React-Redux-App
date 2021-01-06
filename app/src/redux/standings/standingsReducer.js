@@ -1,4 +1,8 @@
-import {FETCH_STANDINGS_REQUEST, FETCH_STANDINGS_SUCCESS, FETCH_STANDINGS_FAILURE} from './standingsTypes';
+import {
+        FETCH_STANDINGS_REQUEST, 
+        FETCH_STANDINGS_SUCCESS, 
+        FETCH_STANDINGS_FAILURE
+        } from './standingsTypes';
 
 const initialData = {
     loading: false,

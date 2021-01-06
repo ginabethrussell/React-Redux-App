@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { store }  from './redux/store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 
-import './App.css';
 import F1Standings from './components/F1Standings';
 import F1Races from './components/F1Races';
 import F1Car from './F1-Car-Racing.png'
+
+import './App.css';
 
 function App() {
   return (

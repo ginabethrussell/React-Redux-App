@@ -1,4 +1,8 @@
-import {FETCH_RACES_REQUEST, FETCH_RACES_SUCCESS, FETCH_RACES_FAILURE} from './racesTypes';
+import {
+        FETCH_RACES_REQUEST, 
+        FETCH_RACES_SUCCESS, 
+        FETCH_RACES_FAILURE
+        } from './racesTypes';
 
 const initialData = {
     loading: false,
@@ -17,7 +21,7 @@ const racesReducer = (state=initialData, action) => {
             return {
                 ...state,
                 loading: false,
-                races: [...action.payload],
+                races: action.payload,
                 error: ''
             }
         case FETCH_RACES_FAILURE:

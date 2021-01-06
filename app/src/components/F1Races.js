@@ -10,15 +10,14 @@ function F1Races({fetchRaces, raceData}) {
     useEffect(()=> {
         fetchRaces();
     }, [])
-    // console.log(raceData);
+   
     const years = [];
       for(let i = 1950; i < 2020; i++){
         years.push(i)
     }
-    // console.log(years)
+ 
     const handleChange = (e) => {
       setYear(e.target.value);
-      console.log(e.target.value)
     }
 
     return raceData.loading ? (
@@ -37,7 +36,7 @@ function F1Races({fetchRaces, raceData}) {
               ))}
               <option value='current'>Current</option>
             </select>
-            <button className='select-season-btn' onClick={() => fetchRaces(year)}>View Races</button>
+            <button onClick={() => fetchRaces(year)}>View Races</button>
           </div>
           <div className='races-wrapper'>
             {raceData && raceData.map(race => (

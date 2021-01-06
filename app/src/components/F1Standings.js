@@ -15,10 +15,9 @@ function F1Drivers({standingsData, fetchStandings}) {
       for(let i = 1950; i < 2020; i++){
         years.push(i)
     }
-    // console.log(years)
+   
     const handleChange = (e) => {
       setYear(e.target.value);
-      console.log(e.target.value)
     }
    
     return standingsData.loading ? (
